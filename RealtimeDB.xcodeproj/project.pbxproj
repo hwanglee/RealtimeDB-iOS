@@ -14,6 +14,13 @@
 		1498A6321FD5BC6E00222FAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1498A6301FD5BC6E00222FAF /* LaunchScreen.storyboard */; };
 		1498A63D1FD5BC6E00222FAF /* RealtimeDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A63C1FD5BC6E00222FAF /* RealtimeDBTests.swift */; };
 		1498A6481FD5BC6E00222FAF /* RealtimeDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A6471FD5BC6E00222FAF /* RealtimeDBUITests.swift */; };
+		14A8698D1FD5C0DA008E1F1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */; };
+		14A869911FD61B44008E1F1C /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869901FD61B44008E1F1C /* RegisterController.swift */; };
+		14A869931FD65DD6008E1F1C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869921FD65DD6008E1F1C /* MainController.swift */; };
+		14CADE141FD71571008B5963 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE131FD71571008B5963 /* Post.swift */; };
+		14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE151FD78178008B5963 /* PostInfoController.swift */; };
+		14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F4B2D31FD678ED003E5375 /* CustomCell.swift */; };
+		B4EFFF73C50E6A1A6A7F6E7E /* Pods_RealtimeDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +54,15 @@
 		1498A6431FD5BC6E00222FAF /* RealtimeDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealtimeDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1498A6471FD5BC6E00222FAF /* RealtimeDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeDBUITests.swift; sourceTree = "<group>"; };
 		1498A6491FD5BC6E00222FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		14A869901FD61B44008E1F1C /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		14A869921FD65DD6008E1F1C /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		14CADE131FD71571008B5963 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		14CADE151FD78178008B5963 /* PostInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoController.swift; sourceTree = "<group>"; };
+		14F4B2D31FD678ED003E5375 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealtimeDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B6982680AA41D4AD76E05DD /* Pods-RealtimeDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealtimeDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB.release.xcconfig"; sourceTree = "<group>"; };
+		E54AB18A694B58D91AB2A728 /* Pods-RealtimeDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealtimeDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4EFFF73C50E6A1A6A7F6E7E /* Pods_RealtimeDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,8 @@
 				1498A63B1FD5BC6E00222FAF /* RealtimeDBTests */,
 				1498A6461FD5BC6E00222FAF /* RealtimeDBUITests */,
 				1498A6251FD5BC6E00222FAF /* Products */,
+				96E94D39349123BEBD42BFC3 /* Pods */,
+				AEC44E5E3E01CDAA07E53C7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +118,12 @@
 			children = (
 				1498A6271FD5BC6E00222FAF /* AppDelegate.swift */,
 				1498A6291FD5BC6E00222FAF /* ViewController.swift */,
+				14A869901FD61B44008E1F1C /* RegisterController.swift */,
+				14A869921FD65DD6008E1F1C /* MainController.swift */,
+				14CADE151FD78178008B5963 /* PostInfoController.swift */,
+				14CADE131FD71571008B5963 /* Post.swift */,
+				14F4B2D31FD678ED003E5375 /* CustomCell.swift */,
+				14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */,
 				1498A62B1FD5BC6E00222FAF /* Main.storyboard */,
 				1498A62E1FD5BC6E00222FAF /* Assets.xcassets */,
 				1498A6301FD5BC6E00222FAF /* LaunchScreen.storyboard */,
@@ -125,6 +150,23 @@
 			path = RealtimeDBUITests;
 			sourceTree = "<group>";
 		};
+		96E94D39349123BEBD42BFC3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E54AB18A694B58D91AB2A728 /* Pods-RealtimeDB.debug.xcconfig */,
+				5B6982680AA41D4AD76E05DD /* Pods-RealtimeDB.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AEC44E5E3E01CDAA07E53C7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1498A64C1FD5BC6E00222FAF /* Build configuration list for PBXNativeTarget "RealtimeDB" */;
 			buildPhases = (
+				39C5949058F680F646D7F7E9 /* [CP] Check Pods Manifest.lock */,
 				1498A6201FD5BC6E00222FAF /* Sources */,
 				1498A6211FD5BC6E00222FAF /* Frameworks */,
 				1498A6221FD5BC6E00222FAF /* Resources */,
+				186E2FB5B29304323C449BB7 /* [CP] Embed Pods Frameworks */,
+				09A086A3AD099855BFF6BF0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14A8698D1FD5C0DA008E1F1C /* GoogleService-Info.plist in Resources */,
 				1498A6321FD5BC6E00222FAF /* LaunchScreen.storyboard in Resources */,
 				1498A62F1FD5BC6E00222FAF /* Assets.xcassets in Resources */,
 				1498A62D1FD5BC6E00222FAF /* Main.storyboard in Resources */,
@@ -254,13 +300,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09A086A3AD099855BFF6BF0B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		186E2FB5B29304323C449BB7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39C5949058F680F646D7F7E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RealtimeDB-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1498A6201FD5BC6E00222FAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14A869931FD65DD6008E1F1C /* MainController.swift in Sources */,
 				1498A62A1FD5BC6E00222FAF /* ViewController.swift in Sources */,
+				14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */,
+				14CADE141FD71571008B5963 /* Post.swift in Sources */,
 				1498A6281FD5BC6E00222FAF /* AppDelegate.swift in Sources */,
+				14A869911FD61B44008E1F1C /* RegisterController.swift in Sources */,
+				14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +535,7 @@
 		};
 		1498A64D1FD5BC6E00222FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E54AB18A694B58D91AB2A728 /* Pods-RealtimeDB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -439,6 +551,7 @@
 		};
 		1498A64E1FD5BC6E00222FAF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6982680AA41D4AD76E05DD /* Pods-RealtimeDB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
