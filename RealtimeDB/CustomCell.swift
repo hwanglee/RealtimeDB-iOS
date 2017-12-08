@@ -12,6 +12,7 @@ class CustomCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var contentLabel: UILabel!
+    @IBOutlet var postImage: UIImageView!
     
     
     override func awakeFromNib() {
@@ -25,4 +26,7 @@ class CustomCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+
 }
+
+

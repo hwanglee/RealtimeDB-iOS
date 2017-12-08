@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		1498A6281FD5BC6E00222FAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A6271FD5BC6E00222FAF /* AppDelegate.swift */; };
-		1498A62A1FD5BC6E00222FAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A6291FD5BC6E00222FAF /* ViewController.swift */; };
 		1498A62D1FD5BC6E00222FAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1498A62B1FD5BC6E00222FAF /* Main.storyboard */; };
 		1498A62F1FD5BC6E00222FAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1498A62E1FD5BC6E00222FAF /* Assets.xcassets */; };
 		1498A6321FD5BC6E00222FAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1498A6301FD5BC6E00222FAF /* LaunchScreen.storyboard */; };
 		1498A63D1FD5BC6E00222FAF /* RealtimeDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A63C1FD5BC6E00222FAF /* RealtimeDBTests.swift */; };
 		1498A6481FD5BC6E00222FAF /* RealtimeDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A6471FD5BC6E00222FAF /* RealtimeDBUITests.swift */; };
+		149B34161FD7DDFA00138F0C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B34151FD7DDFA00138F0C /* LoginController.swift */; };
 		14A8698D1FD5C0DA008E1F1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */; };
 		14A869911FD61B44008E1F1C /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869901FD61B44008E1F1C /* RegisterController.swift */; };
 		14A869931FD65DD6008E1F1C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869921FD65DD6008E1F1C /* MainController.swift */; };
 		14CADE141FD71571008B5963 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE131FD71571008B5963 /* Post.swift */; };
 		14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE151FD78178008B5963 /* PostInfoController.swift */; };
+		14DBB3BD1FD90EB200D016C8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */; };
 		14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F4B2D31FD678ED003E5375 /* CustomCell.swift */; };
 		B4EFFF73C50E6A1A6A7F6E7E /* Pods_RealtimeDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */; };
 /* End PBXBuildFile section */
@@ -43,7 +44,6 @@
 /* Begin PBXFileReference section */
 		1498A6241FD5BC6E00222FAF /* RealtimeDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealtimeDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1498A6271FD5BC6E00222FAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1498A6291FD5BC6E00222FAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1498A62C1FD5BC6E00222FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1498A62E1FD5BC6E00222FAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1498A6311FD5BC6E00222FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,11 +54,13 @@
 		1498A6431FD5BC6E00222FAF /* RealtimeDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RealtimeDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1498A6471FD5BC6E00222FAF /* RealtimeDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeDBUITests.swift; sourceTree = "<group>"; };
 		1498A6491FD5BC6E00222FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		149B34151FD7DDFA00138F0C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		14A869901FD61B44008E1F1C /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		14A869921FD65DD6008E1F1C /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		14CADE131FD71571008B5963 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		14CADE151FD78178008B5963 /* PostInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoController.swift; sourceTree = "<group>"; };
+		14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		14F4B2D31FD678ED003E5375 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealtimeDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B6982680AA41D4AD76E05DD /* Pods-RealtimeDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealtimeDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,10 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				1498A6271FD5BC6E00222FAF /* AppDelegate.swift */,
-				1498A6291FD5BC6E00222FAF /* ViewController.swift */,
-				14A869901FD61B44008E1F1C /* RegisterController.swift */,
-				14A869921FD65DD6008E1F1C /* MainController.swift */,
-				14CADE151FD78178008B5963 /* PostInfoController.swift */,
 				14CADE131FD71571008B5963 /* Post.swift */,
 				14F4B2D31FD678ED003E5375 /* CustomCell.swift */,
 				14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */,
@@ -128,6 +126,7 @@
 				1498A62E1FD5BC6E00222FAF /* Assets.xcassets */,
 				1498A6301FD5BC6E00222FAF /* LaunchScreen.storyboard */,
 				1498A6331FD5BC6E00222FAF /* Info.plist */,
+				149B34171FD7E5A600138F0C /* Controller */,
 			);
 			path = RealtimeDB;
 			sourceTree = "<group>";
@@ -148,6 +147,18 @@
 				1498A6491FD5BC6E00222FAF /* Info.plist */,
 			);
 			path = RealtimeDBUITests;
+			sourceTree = "<group>";
+		};
+		149B34171FD7E5A600138F0C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14CADE151FD78178008B5963 /* PostInfoController.swift */,
+				14A869921FD65DD6008E1F1C /* MainController.swift */,
+				149B34151FD7DDFA00138F0C /* LoginController.swift */,
+				14A869901FD61B44008E1F1C /* RegisterController.swift */,
+				14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		96E94D39349123BEBD42BFC3 /* Pods */ = {
@@ -325,6 +336,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -332,6 +344,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -366,12 +379,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				14A869931FD65DD6008E1F1C /* MainController.swift in Sources */,
-				1498A62A1FD5BC6E00222FAF /* ViewController.swift in Sources */,
+				14DBB3BD1FD90EB200D016C8 /* TabBarController.swift in Sources */,
 				14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */,
 				14CADE141FD71571008B5963 /* Post.swift in Sources */,
 				1498A6281FD5BC6E00222FAF /* AppDelegate.swift in Sources */,
 				14A869911FD61B44008E1F1C /* RegisterController.swift in Sources */,
 				14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */,
+				149B34161FD7DDFA00138F0C /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

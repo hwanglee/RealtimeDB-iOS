@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 import FirebaseStorage
+import FirebaseDatabase
+
 
 class PostInfoController: UIViewController {
     
@@ -22,8 +24,9 @@ class PostInfoController: UIViewController {
     @IBOutlet var callButton: UIButton!
     
     var post : Post?
-
     var location : CLLocationCoordinate2D?
+    var db = Database.database()
+    var storage = Storage.storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +34,15 @@ class PostInfoController: UIViewController {
         print(post!.id)
         titleLabel.text = post!.title
         contentLabel.text = post!.content
+        postImage.image = post!.image
         
+       setupMap()
+    }
+    
+    func setupMap() {
         mapView.mapType = MKMapType.standard
         
-        var geocoder = CLGeocoder()
+        let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(post!.location) { (placemarks, error) in
             let placemark = placemarks?.first
             let lat = placemark?.location?.coordinate.latitude
@@ -53,10 +61,6 @@ class PostInfoController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func openMapsPress(_ sender: UIButton) {
         let regionDistance : CLLocationDistance = 10000
@@ -72,5 +76,6 @@ class PostInfoController: UIViewController {
     }
     
     @IBAction func callPress(_ sender: UIButton) {
+        
     }
 }

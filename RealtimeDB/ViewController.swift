@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 
-class ViewController: UIViewController {
+class LoginController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -24,11 +24,6 @@ class ViewController: UIViewController {
         
         usernameField.placeholder = "Email"
         passwordField.placeholder = "Pasword"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func loginAction(_ sender: UIButton) {

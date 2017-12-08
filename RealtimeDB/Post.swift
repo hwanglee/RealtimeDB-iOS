@@ -20,6 +20,7 @@ class Post : NSObject {
     var end: String
     var summary: String
     var location: String
+    var image: UIImage?
     
     init(snapshot: DataSnapshot) {
         let values = snapshot.value as? [String:AnyObject]
@@ -33,5 +34,9 @@ class Post : NSObject {
         end = values!["end"] as! String
         summary = values!["summary"] as! String
         location = values!["location"] as! String
+    }
+    
+    func addImage(img: UIImage?) {
+        image = img
     }
 }

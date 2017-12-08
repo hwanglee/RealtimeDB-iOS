@@ -24,21 +24,23 @@ class RegisterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.hideKeyboard()
 
+        initializePlaceholders()
+        db = Database.database().reference()
+    }
+    
+    func initializePlaceholders() {
         firstNameField.placeholder = "First name"
         lastNameField.placeholder = "Last name"
         addressField.placeholder = "Address"
         emailField.placeholder = "Email"
         passwordField.placeholder = "Password"
         phoneField.placeholder = "Phone number"
-        db = Database.database().reference()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+
     
     @IBAction func registerAction(_ sender: UIButton) {
         if firstNameField.text! == "" || lastNameField.text! == "" || addressField.text! == "" || emailField.text! == "" || passwordField.text! == "" || phoneField.text! == "" {
@@ -59,11 +61,21 @@ class RegisterController: UIViewController {
                     let values = ["address": self.addressField.text!, "cellPhone": self.phoneField.text!, "createdAt": ServerValue.timestamp(), "email": self.emailField.text!,
                         "firstName": self.firstNameField.text!, "id": uid!, "lastName": self.lastNameField.text!, "subscription": false, "type": "reader"] as [String : Any]
                     
-                    let result = usersRef.child(uid!).setValue(values)
+                    let result = usersRef.child(uid!).setValue(values, withCompletionBlock: { (error, ref) in
+                        
+                        if error != nil {
+                            print(error)
+                        } else {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainController")
+                            //                    self.navigationController!.pushViewController(vc!, animated: true)
+                            
+                            let navController = UINavigationController(rootViewController: vc!)
+                            self.present(navController, animated: true, completion: nil)
+                        }
                     
-                    print("added")
+                    })
                     
-                    self.navigationController?.popToRootViewController(animated: true) 
+                    
                 }
                 
                 else {
@@ -79,6 +91,10 @@ class RegisterController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
 
 }
