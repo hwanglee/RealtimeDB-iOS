@@ -66,7 +66,9 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // loop through the children and append them to the new array
             for item in snapshot.children {
                 let post = Post(snapshot: item as! DataSnapshot)
-                let reference = Storage.storage().reference(forURL: "gs://realtime-1608c.appspot.com/posts/\(post.id)/0")
+                
+               
+                let reference = Storage.storage().reference(forURL: "gs://realtime-1608c.appspot.com/posts/\(post.id!)/0")
                 
                 reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
                     if let error = error {

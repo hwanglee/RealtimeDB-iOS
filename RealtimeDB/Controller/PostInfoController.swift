@@ -43,7 +43,7 @@ class PostInfoController: UIViewController {
         mapView.mapType = MKMapType.standard
         
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(post!.location) { (placemarks, error) in
+        geocoder.geocodeAddressString(post!.location!) { (placemarks, error) in
             let placemark = placemarks?.first
             let lat = placemark?.location?.coordinate.latitude
             let lon = placemark?.location?.coordinate.longitude

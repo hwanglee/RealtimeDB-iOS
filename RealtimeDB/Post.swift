@@ -11,29 +11,29 @@ import FirebaseDatabase
 import Foundation
 
 class Post : NSObject {
-    var title: String
-    var content: String
-    var id: String
-    var category: Int
-    var pid: String
-    var start: String
-    var end: String
-    var summary: String
-    var location: String
+    var title: String?
+    var content: String?
+    var id: String?
+    var category: Int?
+    var pid: String?
+    var start: String?
+    var end: String?
+    var summary: String?
+    var location: String?
     var image: UIImage?
     
     init(snapshot: DataSnapshot) {
         let values = snapshot.value as? [String:AnyObject]
         
-        title = values!["title"] as! String
-        content = values!["content"] as! String
-        id = values!["id"] as! String
-        category = values!["category"] as! Int
-        pid = values!["pid"] as! String
-        start = values!["start"] as! String
-        end = values!["end"] as! String
-        summary = values!["summary"] as! String
-        location = values!["location"] as! String
+        title = values!["title"] as? String
+        content = values!["content"] as? String
+        id = values!["id"] as? String
+        category = values!["category"] as? Int
+        pid = values!["pid"] as? String
+        start = values!["start"] as? String
+        end = values!["end"] as? String
+        summary = values!["summary"] as? String
+        location = values!["location"] as? String
     }
     
     func addImage(img: UIImage?) {
