@@ -9,9 +9,25 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
-class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+public extension UIImage {
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        color.setFill()
+        UIRectFill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        guard let cgImage = image?.cgImage else { return nil }
+        self.init(cgImage: cgImage)
+    }
+}
 
+
+class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     var db : DatabaseReference?
     @IBOutlet weak var tableView: UITableView!
     var items = [Post]()
@@ -19,37 +35,36 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         db = Database.database().reference()
         loadPosts()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-       setupNavbar()
+        setupNavbar()
     }
     
     func setupNavbar() {
-        self.title = "Posts"
+        self.title = "Favorites"
         
-        let locationButton = UIButton(type: .roundedRect)
-        locationButton.setTitle("Location", for: .normal)
-        locationButton.addTarget(self, action: #selector(random), for: .touchUpInside)
-        let barButton = UIBarButtonItem(customView: locationButton)
-        self.navigationItem.leftBarButtonItem = barButton
+//        let locationButton = UIButton(type: .roundedRect)
+//        locationButton.setTitle("Location", for: .normal)
+//        locationButton.addTarget(self, action: #selector(random), for: .touchUpInside)
+//        let barButton = UIBarButtonItem(customView: locationButton)
+//        self.navigationItem.leftBarButtonItem = barButton
     }
     
     func loadPosts() {
-        db?.child("posts").observe(.value) { (snapshot) in
+        let userID = Auth.auth().currentUser?.uid
+        db?.child("favorites").child(userID!).observe(.value) { (snapshot) in
             
             var newItems = [Post]()
             
-
+            
             // loop through the children and append them to the new array
             for item in snapshot.children {
                 let post = Post(snapshot: item as! DataSnapshot)
-                
-               
                 let reference = Storage.storage().reference(forURL: "gs://realtime-1608c.appspot.com/posts/\(post.id!)/0")
                 
                 reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
@@ -77,7 +92,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-
+    
     @objc func random() {
         print("hI")
     }
@@ -92,20 +107,20 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-
+    
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : CustomCell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
         cell.titleLabel.text = self.items[indexPath.row].title
         cell.contentLabel.text = self.items[indexPath.row].summary
         cell.postImage.image = self.items[indexPath.row].image
-
+        
         return cell
     }
     
@@ -132,20 +147,9 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let height = NSNumber(value: Float(cell.frame.size.height))
         heightAtIndexPath.setObject(height, forKey: indexPath as NSCopying)
     }
+  
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let favoriteAction = UITableViewRowAction(style: .default, title: "Favorite") { (action, index) in
-            let uid = Auth.auth().currentUser?.uid
-            let usersRef = self.db?.child("favorites").child(uid!).child(self.items[indexPath.row].id!)
-            usersRef?.setValue(true)
-    
-        }
-        favoriteAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
-        
-        return [favoriteAction]
-    }
-
-
 }
+
 
 

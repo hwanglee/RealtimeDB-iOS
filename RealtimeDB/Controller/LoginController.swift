@@ -50,11 +50,13 @@ class LoginController: UIViewController {
         if Auth.auth().currentUser?.uid == nil {
             
         } else {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainController")
-            //                    self.navigationController!.pushViewController(vc!, animated: true)
-            
-            let navController = UINavigationController(rootViewController: vc!)
-            self.present(navController, animated: true, completion: nil)
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainController")
+//            //                    self.navigationController!.pushViewController(vc!, animated: true)
+//
+//            let navController = UINavigationController(rootViewController: vc!)
+//            self.present(navController, animated: true, completion: nil)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController")
+            self.present(vc!, animated: true, completion: nil)
         }
     }
     

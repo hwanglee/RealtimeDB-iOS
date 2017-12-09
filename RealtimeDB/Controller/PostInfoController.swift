@@ -31,12 +31,22 @@ class PostInfoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(post!.id)
+        print(post!.id!)
         titleLabel.text = post!.title
         contentLabel.text = post!.content
         postImage.image = post!.image
         
-       setupMap()
+        setupMap()
+        
+        let locationButton = UIButton(type: .roundedRect)
+        locationButton.setTitle("Favorite", for: .normal)
+        locationButton.addTarget(self, action: #selector(random), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: locationButton)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc func random() {
+        print("Favorite")
     }
     
     func setupMap() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144B29881FDC91960037F714 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B29871FDC91960037F714 /* FavoritesController.swift */; };
 		1498A6281FD5BC6E00222FAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498A6271FD5BC6E00222FAF /* AppDelegate.swift */; };
 		1498A62D1FD5BC6E00222FAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1498A62B1FD5BC6E00222FAF /* Main.storyboard */; };
 		1498A62F1FD5BC6E00222FAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1498A62E1FD5BC6E00222FAF /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		144B29871FDC91960037F714 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		1498A6241FD5BC6E00222FAF /* RealtimeDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealtimeDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1498A6271FD5BC6E00222FAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1498A62C1FD5BC6E00222FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				149B34151FD7DDFA00138F0C /* LoginController.swift */,
 				14A869901FD61B44008E1F1C /* RegisterController.swift */,
 				14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */,
+				144B29871FDC91960037F714 /* FavoritesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 			files = (
 				14A869931FD65DD6008E1F1C /* MainController.swift in Sources */,
 				14DBB3BD1FD90EB200D016C8 /* TabBarController.swift in Sources */,
+				144B29881FDC91960037F714 /* FavoritesController.swift in Sources */,
 				14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */,
 				14CADE141FD71571008B5963 /* Post.swift in Sources */,
 				1498A6281FD5BC6E00222FAF /* AppDelegate.swift in Sources */,
