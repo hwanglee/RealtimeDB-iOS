@@ -353,10 +353,10 @@
             </objects>
             <point key="canvasLocation" x="1129" y="3197"/>
         </scene>
-        <!--Test-->
+        <!--Favorites-->
         <scene sceneID="vUX-1W-x5h">
             <objects>
-                <viewController storyboardIdentifier="FavoritesController" id="WzQ-TN-M2b" customClass="MainController" customModule="RealtimeDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesController" id="WzQ-TN-M2b" customClass="FavoritesController" customModule="RealtimeDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RuL-yq-8fM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,14 +411,18 @@
                         <viewLayoutGuide key="safeArea" id="du5-c3-KuC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="yun-ND-2HA"/>
-                    <navigationItem key="navigationItem" title="Test" id="0C8-eZ-vxD"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="0C8-eZ-vxD"/>
                     <connections>
-                        <outlet property="tableView" destination="nwQ-c1-OTx" id="ctx-cY-uQi"/>
+                        <outlet property="tableView" destination="nwQ-c1-OTx" id="4Tx-EE-Ftm"/>
+                        <segue destination="afl-fd-qjA" kind="show" identifier="favoriteInfo" id="Om3-CZ-TFF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeT-Bu-4GB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2204" y="3205"/>
+            <point key="canvasLocation" x="2282" y="3142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Om3-CZ-TFF"/>
+    </inferredMetricsTieBreakers>
 </document>

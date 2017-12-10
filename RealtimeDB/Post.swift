@@ -21,19 +21,22 @@ class Post : NSObject {
     var summary: String?
     var location: String?
     var image: UIImage?
+    var ref: DatabaseReference?
     
     init(snapshot: DataSnapshot) {
-        let values = snapshot.value as? [String:AnyObject]
+        if let values = snapshot.value as? [String:AnyObject] {
         
-        title = values!["title"] as? String
-        content = values!["content"] as? String
-        id = values!["id"] as? String
-        category = values!["category"] as? Int
-        pid = values!["pid"] as? String
-        start = values!["start"] as? String
-        end = values!["end"] as? String
-        summary = values!["summary"] as? String
-        location = values!["location"] as? String
+        title = values["title"] as? String
+        content = values["content"] as? String
+        id = values["id"] as? String
+        category = values["category"] as? Int
+        pid = values["pid"] as? String
+        start = values["start"] as? String
+        end = values["end"] as? String
+        summary = values["summary"] as? String
+        location = values["location"] as? String
+        ref = snapshot.ref as? DatabaseReference
+        }
     }
     
     func addImage(img: UIImage?) {

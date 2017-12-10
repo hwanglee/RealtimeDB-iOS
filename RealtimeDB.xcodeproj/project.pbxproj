@@ -20,7 +20,6 @@
 		14A869931FD65DD6008E1F1C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869921FD65DD6008E1F1C /* MainController.swift */; };
 		14CADE141FD71571008B5963 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE131FD71571008B5963 /* Post.swift */; };
 		14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE151FD78178008B5963 /* PostInfoController.swift */; };
-		14DBB3BD1FD90EB200D016C8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */; };
 		14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F4B2D31FD678ED003E5375 /* CustomCell.swift */; };
 		B4EFFF73C50E6A1A6A7F6E7E /* Pods_RealtimeDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,6 @@
 		14A869921FD65DD6008E1F1C /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		14CADE131FD71571008B5963 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		14CADE151FD78178008B5963 /* PostInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoController.swift; sourceTree = "<group>"; };
-		14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		14F4B2D31FD678ED003E5375 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		175F594C509B3514698A3710 /* Pods_RealtimeDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealtimeDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B6982680AA41D4AD76E05DD /* Pods-RealtimeDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealtimeDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealtimeDB/Pods-RealtimeDB.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				14A869921FD65DD6008E1F1C /* MainController.swift */,
 				149B34151FD7DDFA00138F0C /* LoginController.swift */,
 				14A869901FD61B44008E1F1C /* RegisterController.swift */,
-				14DBB3BC1FD90EB200D016C8 /* TabBarController.swift */,
 				144B29871FDC91960037F714 /* FavoritesController.swift */,
 			);
 			path = Controller;
@@ -382,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				14A869931FD65DD6008E1F1C /* MainController.swift in Sources */,
-				14DBB3BD1FD90EB200D016C8 /* TabBarController.swift in Sources */,
 				144B29881FDC91960037F714 /* FavoritesController.swift in Sources */,
 				14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */,
 				14CADE141FD71571008B5963 /* Post.swift in Sources */,
