@@ -85,16 +85,22 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
                         })
                         
                         newItems.append(post)
-                        print(newItems.count)
+                        print("\(newItems.count) ASDASDSD")
                         self.favorites = newItems
+                        self.tableView.reloadData()
                     }
                 }
             }
-            self.tableView.reloadData()
             
         }
+        
+        self.db?.child("favorites").child(userID!).observe(.childRemoved, with: { (removedData) in
+            self.favorites.removeAll()
+            self.tableView.reloadData()
+            self.loadFavorites()
+        })
+        
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "favoriteInfo" {
@@ -110,7 +116,7 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(favorites.count)
+        print("\(favorites.count) TABLE VIEW")
         return self.favorites.count
     }
     
@@ -153,7 +159,16 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
             let uid = Auth.auth().currentUser?.uid
             let usersRef = self.db?.child("favorites").child(uid!).child(self.favorites[indexPath.row].id!)
             usersRef?.removeValue()
+
+            let alert = UIAlertController(title: "", message: "Favorite Removed", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
             
+            // change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 0.7
+            DispatchQueue.main.asyncAfter(deadline: when){
+                // your code with delay
+                alert.dismiss(animated: true, completion: nil)
+            }
         }
         favoriteAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
         

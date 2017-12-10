@@ -23,7 +23,6 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         db = Database.database().reference()
         loadPosts()
-        loadFavorites()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -41,48 +40,9 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let barButton = UIBarButtonItem(customView: locationButton)
         self.navigationItem.leftBarButtonItem = barButton
     }
-    
-    func loadFavorites() {
-        let userID = Auth.auth().currentUser?.uid
-        var postIDs = [String]()
-        var newItems = [Post]()
-        
-        db?.child("favorites").child(userID!).observe(.value) { (snapshot) in
-            for item in snapshot.children {
-                let item = item as? DataSnapshot
-                print(item!.key)
-                postIDs.append(item!.key)
-            }
-            
-            for id in postIDs {
-                self.db?.child("posts").child(id).observe(.value) { (snapshot) in
-                    let post = Post(snapshot: snapshot)
-                    if let id = post.id {
-                    let reference = Storage.storage().reference(forURL: "gs://realtime-1608c.appspot.com/posts/\(id)/0")
-                    
-//                    reference.getData(maxSize: 1 * 1024 * 1024, completion: { (data, error) in
-//                        if let error = error {
-//
-//                        } else {
-//                            let image = UIImage(data: data!)
-//                            post.addImage(img: image)
-//                        }
-//                    })
-//
-                    newItems.append(post)
-                    print(newItems.count)
-                    self.favorites = newItems
-                    }
-                }
-            }
-
-        }
-        
-        
-    }
+ 
     
     func loadPosts() {
-        
         db?.child("posts").observe(.value) { (snapshot) in
             var newItems = [Post]()
             
@@ -178,6 +138,15 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let usersRef = self.db?.child("favorites").child(uid!).child(self.items[indexPath.row].id!)
             usersRef?.setValue(true)
             
+            let alert = UIAlertController(title: "", message: "Favorite Added", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            
+            // change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 0.7
+            DispatchQueue.main.asyncAfter(deadline: when){
+                // your code with delay
+                alert.dismiss(animated: true, completion: nil)
+            }
         }
         favoriteAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
         
