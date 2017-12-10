@@ -35,11 +35,16 @@ class Post : NSObject {
         end = values["end"] as? String
         summary = values["summary"] as? String
         location = values["location"] as? String
-        ref = snapshot.ref as? DatabaseReference
+        ref = snapshot.ref 
+            
         }
     }
     
     func addImage(img: UIImage?) {
         image = img
+    }
+    
+    func parseContent(content: String) {
+        
     }
 }
