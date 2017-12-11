@@ -40,7 +40,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let barButton = UIBarButtonItem(customView: locationButton)
         self.navigationItem.leftBarButtonItem = barButton
     }
- 
+    
     
     func loadPosts() {
         db?.child("posts").observe(.value) { (snapshot) in
@@ -53,7 +53,6 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
                     if let error = error {
-                        
                         //                        print(error)
                     } else {
                         

@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class RegisterController: UIViewController {
-
+    
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var addressField: UITextField!
@@ -26,7 +26,7 @@ class RegisterController: UIViewController {
         super.viewDidLoad()
         
         self.hideKeyboard()
-
+        
         initializePlaceholders()
         db = Database.database().reference()
     }
@@ -40,7 +40,7 @@ class RegisterController: UIViewController {
         phoneField.placeholder = "Phone number"
     }
     
-
+    
     
     @IBAction func registerAction(_ sender: UIButton) {
         if firstNameField.text! == "" || lastNameField.text! == "" || addressField.text! == "" || emailField.text! == "" || passwordField.text! == "" || phoneField.text! == "" {
@@ -59,7 +59,7 @@ class RegisterController: UIViewController {
                     let uid = Auth.auth().currentUser?.uid
                     
                     let values = ["address": self.addressField.text!, "cellPhone": self.phoneField.text!, "createdAt": ServerValue.timestamp(), "email": self.emailField.text!,
-                        "firstName": self.firstNameField.text!, "id": uid!, "lastName": self.lastNameField.text!, "subscription": false, "type": "reader"] as [String : Any]
+                                  "firstName": self.firstNameField.text!, "id": uid!, "lastName": self.lastNameField.text!, "subscription": false, "type": "reader"] as [String : Any]
                     
                     let result = usersRef.child(uid!).setValue(values, withCompletionBlock: { (error, ref) in
                         
@@ -72,12 +72,12 @@ class RegisterController: UIViewController {
                             let navController = UINavigationController(rootViewController: vc!)
                             self.present(navController, animated: true, completion: nil)
                         }
-                    
+                        
                     })
                     
                     
                 }
-                
+                    
                 else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -85,7 +85,7 @@ class RegisterController: UIViewController {
                     alertController.addAction(defaultAction)
                     
                     self.present(alertController, animated: true, completion: nil)
-
+                    
                 }
             })
         }
@@ -96,5 +96,5 @@ class RegisterController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-
+    
 }

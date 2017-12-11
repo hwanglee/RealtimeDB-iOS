@@ -64,11 +64,9 @@ class LoginController: UIViewController {
                 if error == nil {
                     print("Logged in")
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainController")
-                    //                    self.navigationController!.pushViewController(vc!, animated: true)
-                    
-                    let navController = UINavigationController(rootViewController: vc!)
-                    self.present(navController, animated: true, completion: nil)
+                    if let tabViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController {
+                        self.present(tabViewController, animated: true, completion: nil)
+                    }
                 }
                     
                 else {
@@ -85,11 +83,7 @@ class LoginController: UIViewController {
     
     
     @IBAction func registerAction(_ sender: UIButton) {
-        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "RegisterController")
-        //        self.present(vc!, animated: true, completion: nil)
-        
         self.performSegue(withIdentifier: "registerSegue", sender: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

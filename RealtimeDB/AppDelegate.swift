@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         } else {
-            let vc = storyboard.instantiateViewController(withIdentifier: "MainController")
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginNavController")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         }

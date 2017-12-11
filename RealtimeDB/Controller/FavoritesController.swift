@@ -159,7 +159,7 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
             let uid = Auth.auth().currentUser?.uid
             let usersRef = self.db?.child("favorites").child(uid!).child(self.favorites[indexPath.row].id!)
             usersRef?.removeValue()
-
+            
             let alert = UIAlertController(title: "", message: "Favorite Removed", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
             
@@ -170,7 +170,7 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
                 alert.dismiss(animated: true, completion: nil)
             }
         }
-        favoriteAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0)
+        favoriteAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.7922, alpha: 1.0)
         
         return [favoriteAction]
     }

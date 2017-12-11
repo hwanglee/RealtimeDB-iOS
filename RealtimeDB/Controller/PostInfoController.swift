@@ -9,8 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-import FirebaseStorage
-import FirebaseDatabase
+import Firebase
 
 
 class PostInfoController: UIViewController {
@@ -46,7 +45,19 @@ class PostInfoController: UIViewController {
     }
     
     @objc func random() {
-        print("Favorite")
+        let uid = Auth.auth().currentUser?.uid
+        let usersRef = self.db.reference().child("favorites").child(uid!).child(post!.id!)
+        usersRef.setValue(true)
+        
+        let alert = UIAlertController(title: "", message: "Favorite Added", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        
+        // change to desired number of seconds (in this case 5 seconds)
+        let when = DispatchTime.now() + 0.7
+        DispatchQueue.main.asyncAfter(deadline: when){
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
     
     func setupMap() {

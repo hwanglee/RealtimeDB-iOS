@@ -18,6 +18,7 @@
 		14A8698D1FD5C0DA008E1F1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */; };
 		14A869911FD61B44008E1F1C /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869901FD61B44008E1F1C /* RegisterController.swift */; };
 		14A869931FD65DD6008E1F1C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A869921FD65DD6008E1F1C /* MainController.swift */; };
+		14C327201FDE31CD00FEB46E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3271F1FDE31CD00FEB46E /* ProfileController.swift */; };
 		14CADE141FD71571008B5963 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE131FD71571008B5963 /* Post.swift */; };
 		14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CADE151FD78178008B5963 /* PostInfoController.swift */; };
 		14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F4B2D31FD678ED003E5375 /* CustomCell.swift */; };
@@ -59,6 +60,7 @@
 		14A8698C1FD5C0BE008E1F1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		14A869901FD61B44008E1F1C /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		14A869921FD65DD6008E1F1C /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		14C3271F1FDE31CD00FEB46E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		14CADE131FD71571008B5963 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		14CADE151FD78178008B5963 /* PostInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoController.swift; sourceTree = "<group>"; };
 		14F4B2D31FD678ED003E5375 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				149B34151FD7DDFA00138F0C /* LoginController.swift */,
 				14A869901FD61B44008E1F1C /* RegisterController.swift */,
 				144B29871FDC91960037F714 /* FavoritesController.swift */,
+				14C3271F1FDE31CD00FEB46E /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				14F4B2D41FD678ED003E5375 /* CustomCell.swift in Sources */,
 				14CADE141FD71571008B5963 /* Post.swift in Sources */,
 				1498A6281FD5BC6E00222FAF /* AppDelegate.swift in Sources */,
+				14C327201FDE31CD00FEB46E /* ProfileController.swift in Sources */,
 				14A869911FD61B44008E1F1C /* RegisterController.swift in Sources */,
 				14CADE161FD78178008B5963 /* PostInfoController.swift in Sources */,
 				149B34161FD7DDFA00138F0C /* LoginController.swift in Sources */,
