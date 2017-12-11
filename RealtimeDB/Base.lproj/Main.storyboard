@@ -278,6 +278,7 @@
                         <outlet property="openMapsButton" destination="oyG-dK-AAE" id="A8X-mx-5RK"/>
                         <outlet property="postImage" destination="05G-eR-xr7" id="Pbc-wY-45g"/>
                         <outlet property="publisherLabel" destination="PZ6-ea-czQ" id="HPe-sn-NkU"/>
+                        <outlet property="scrollView" destination="h4A-pd-AcT" id="Ohg-KP-fze"/>
                         <outlet property="titleLabel" destination="yQb-wP-HVw" id="KOH-VN-CVB"/>
                     </connections>
                 </viewController>

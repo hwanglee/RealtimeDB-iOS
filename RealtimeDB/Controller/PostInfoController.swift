@@ -21,6 +21,7 @@ class PostInfoController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var openMapsButton: UIButton!
     @IBOutlet var callButton: UIButton!
+    @IBOutlet var scrollView: UIScrollView!
     
     var post : Post?
     var location : CLLocationCoordinate2D?
@@ -29,11 +30,12 @@ class PostInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         print(post!.id!)
         titleLabel.text = post!.title
         contentLabel.text = post!.content
         postImage.image = post!.image
+        scrollView.contentSize = CGSize.init(width: 400, height: 700)
         
         setupMap()
         
