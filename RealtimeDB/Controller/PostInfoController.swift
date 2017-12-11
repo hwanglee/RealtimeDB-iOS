@@ -75,7 +75,7 @@ class PostInfoController: UIViewController {
             
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegionMake(self.location!, span)
-            self.mapView.setRegion(region, animated: true)
+            self.mapView.setRegion(region, animated: false)
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = self.location!

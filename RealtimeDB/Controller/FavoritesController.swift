@@ -86,7 +86,7 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                         newItems.append(post)
                         print("\(newItems.count) ASDASDSD")
-                        self.favorites = newItems
+                        self.favorites = newItems.reversed()
                         self.tableView.reloadData()
                     }
                 }

@@ -61,7 +61,7 @@ class ProfileController: UIViewController {
         var data : [String : AnyObject] = [:]
         
         if let user = user {
-            data = ["address": addressTextField.text, "cellPhone": phoneTextField.text, "createdAt": user.createdAt!, "email": user.email!,  "firstName": firstNameTextField.text, "id": user.id!, "lastName": lastNameTextField.text, "subscription": user.subscription!, "type": user.type!] as [String : AnyObject]
+            data = ["address": addressTextField.text!, "cellPhone": phoneTextField.text!, "createdAt": user.createdAt!, "email": user.email!,  "firstName": firstNameTextField.text!, "id": user.id!, "lastName": lastNameTextField.text!, "subscription": user.subscription!, "type": user.type!] as [String : AnyObject]
         }
         
         db.child("users").child(uid!).setValue(data) { (error, ref) in

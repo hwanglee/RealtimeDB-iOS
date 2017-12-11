@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
+import CoreLocation
 
 class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -69,7 +69,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             // replace the old array
-            self.items = newItems
+            self.items = newItems.reversed()
             // reload the UITableView
             self.tableView.reloadData()
         }
