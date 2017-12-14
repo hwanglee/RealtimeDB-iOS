@@ -15,29 +15,39 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var db : DatabaseReference?
     var currentCity = ""
     @IBOutlet weak var tableView: UITableView!
-    var items = [Post]()
-    var favorites = [Post]()
+    var posts = [Post]()
+    var filteredPosts = [Post]()
     var heightAtIndexPath = NSMutableDictionary()
     let locationManager = CLLocationManager()
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavbar()
+        setupSearchBar()
         setupLocation()
         db = Database.database().reference()
         loadPosts()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        setupNavbar()
     }
     
+    // MARK: Setup stuff
     func setupLocation() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
+    }
+    
+    func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Posts"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     func setupNavbar() {
@@ -55,6 +65,25 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.leftBarButtonItem = barButton
     }
     
+    // MARK: Searchbar stuff
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredPosts = posts.filter({(post: Post) -> Bool in
+            return (post.title?.lowercased().contains(searchText.lowercased()))! || (post.location?.lowercased().contains(searchText.lowercased()))!
+        })
+        
+        tableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    
     func lookUpLocation(posts: [Post], completion: @escaping() -> ()) {
         guard let post = posts.first else {
             completion()
@@ -69,7 +98,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("a")
                 }
             }
-        
+            
             let remainingPosts = Array(posts[1..<posts.count])
             self.lookUpLocation(posts: remainingPosts, completion: completion)
         }
@@ -100,9 +129,8 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func loadPosts() {
         db?.child("posts").observe(.value) { (snapshot) in
-            var newItems = [Post]()
+            var newPosts = [Post]()
             let currentDate = Date()
-            let geocoder = CLGeocoder()
             
             // loop through the children and append them to the new array
             for item in snapshot.children {
@@ -125,14 +153,14 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 if let endDate = post.endDate {
                     if endDate > currentDate {
-                        newItems.append(post)
+                        newPosts.append(post)
                     }
                 }
             }
             
             // replace the old array
-            self.items = newItems.reversed()
-            self.lookUpLocation(posts: self.items) { () in
+            self.posts = newPosts.reversed()
+            self.lookUpLocation(posts: self.posts) { () in
                 self.tableView.reloadData()
             }
             
@@ -158,21 +186,31 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: TableView Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        if isFiltering() {
+            return self.filteredPosts.count
+        }
+        
+        return self.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : CustomCell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-        cell.titleLabel.text = self.items[indexPath.row].title
-        cell.contentLabel.text = self.items[indexPath.row].summary
-        cell.postImage.image = self.items[indexPath.row].image
+        if isFiltering() {
+            cell.titleLabel.text = self.filteredPosts[indexPath.row].title
+            cell.contentLabel.text = self.filteredPosts[indexPath.row].summary
+            cell.postImage.image = self.filteredPosts[indexPath.row].image
+        } else {
+            cell.titleLabel.text = self.posts[indexPath.row].title
+            cell.contentLabel.text = self.posts[indexPath.row].summary
+            cell.postImage.image = self.posts[indexPath.row].image
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = items[indexPath.row]
+        let post = posts[indexPath.row]
         let uid = post.pid!
         
         db?.child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
@@ -203,7 +241,7 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let favoriteAction = UITableViewRowAction(style: .default, title: "Favorite") { (action, index) in
             let uid = Auth.auth().currentUser?.uid
-            let usersRef = self.db?.child("favorites").child(uid!).child(self.items[indexPath.row].id!)
+            let usersRef = self.db?.child("favorites").child(uid!).child(self.posts[indexPath.row].id!)
             usersRef?.setValue(true)
             
             let alert = UIAlertController(title: "", message: "Favorite Added", preferredStyle: .alert)
@@ -221,5 +259,13 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return [favoriteAction]
     }
 }
+
+extension MainController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+
 
 
