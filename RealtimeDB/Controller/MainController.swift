@@ -10,17 +10,20 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     var db : DatabaseReference?
+    var currentCity = ""
     @IBOutlet weak var tableView: UITableView!
     var items = [Post]()
     var favorites = [Post]()
     var heightAtIndexPath = NSMutableDictionary()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLocation()
         db = Database.database().reference()
         loadPosts()
         
@@ -28,11 +31,22 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         
         setupNavbar()
-        
+    }
+    
+    func setupLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.startUpdatingLocation()
     }
     
     func setupNavbar() {
-        self.title = "Posts"
+        lookUpCurrentLocation { (placemark) in
+            if placemark != nil {
+                self.title = placemark?.locality
+                self.currentCity = (placemark?.locality)!
+            }
+        }
         
         let locationButton = UIButton(type: .roundedRect)
         locationButton.setTitle("Location", for: .normal)
@@ -41,10 +55,54 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.leftBarButtonItem = barButton
     }
     
+    func lookUpLocation(posts: [Post], completion: @escaping() -> ()) {
+        guard let post = posts.first else {
+            completion()
+            return
+        }
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(post.location!) { (placemarks, error) in
+            
+            if let placemark = placemarks?.first {
+                if placemark.locality != self.currentCity {
+                    print("a")
+                }
+            }
+        
+            let remainingPosts = Array(posts[1..<posts.count])
+            self.lookUpLocation(posts: remainingPosts, completion: completion)
+        }
+    }
+    
+    func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?) -> Void ) {
+        // Use the last reported location.
+        if let lastLocation = self.locationManager.location {
+            let geocoder = CLGeocoder()
+            
+            // Look up the location and pass it to the completion handler
+            geocoder.reverseGeocodeLocation(lastLocation, completionHandler: { (placemarks, error) in
+                if error == nil {
+                    let firstLocation = placemarks?[0]
+                    completionHandler(firstLocation)
+                }
+                else {
+                    // An error occurred during geocoding.
+                    completionHandler(nil)
+                }
+            })
+        }
+        else {
+            // No location was available.
+            completionHandler(nil)
+        }
+    }
     
     func loadPosts() {
         db?.child("posts").observe(.value) { (snapshot) in
             var newItems = [Post]()
+            let currentDate = Date()
+            let geocoder = CLGeocoder()
             
             // loop through the children and append them to the new array
             for item in snapshot.children {
@@ -52,26 +110,32 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let reference = Storage.storage().reference(forURL: "gs://realtime-1608c.appspot.com/posts/\(post.id!)/0")
                 
                 reference.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
-                    if let error = error {
+                    if error != nil {
                         //                        print(error)
                     } else {
-                        
-                        DispatchQueue.main.async { //UPDATED PART OF CODE STARTS HERE
+                        DispatchQueue.main.async {
                             let image = UIImage(data: data!)
                             post.addImage(img: image)
                             self.tableView.reloadData()
                         }
                         
                     }
+                    
                 }
                 
-                newItems.append(post)
+                if let endDate = post.endDate {
+                    if endDate > currentDate {
+                        newItems.append(post)
+                    }
+                }
             }
             
             // replace the old array
             self.items = newItems.reversed()
-            // reload the UITableView
-            self.tableView.reloadData()
+            self.lookUpLocation(posts: self.items) { () in
+                self.tableView.reloadData()
+            }
+            
         }
         
     }
@@ -83,9 +147,9 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postInfo" {
             let controller = segue.destination as! PostInfoController
-            let post = sender as! Post
+            let data = sender as! (Post, User)
             
-            controller.post = post
+            controller.data = data
         }
     }
     
@@ -109,9 +173,14 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = items[indexPath.row]
+        let uid = post.pid!
         
-        self.performSegue(withIdentifier: "postInfo", sender: post)
-        tableView.deselectRow(at: indexPath, animated: true)
+        db?.child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let publisher = User(snapshot: snapshot)
+            
+            self.performSegue(withIdentifier: "postInfo", sender: (post, publisher))
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,8 +220,6 @@ class MainController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return [favoriteAction]
     }
-    
-    
 }
 
 

@@ -22,9 +22,7 @@ class User : NSObject {
     var db = Database.database().reference()
     
     init(snapshot: DataSnapshot) {
-        
         let values = snapshot.value as! [String: AnyObject]
-        print(values)
         self.address = values["address"] as? String
         self.cellPhone = values["cellPhone"] as? String
         self.createdAt = values["createdAt"] as? Int
@@ -34,6 +32,19 @@ class User : NSObject {
         self.lastName = values["lastName"] as? String
         self.subscription = values["subscription"] as? Bool
         self.type = values["type"] as? String
+    }
+    
+    override init() {
+        self.address = ""
+        self.cellPhone = ""
+        self.createdAt = 0
+        self.email = ""
+        self.firstName = ""
+        self.id = ""
+        self.lastName = ""
+        self.subscription = false
+        self.type = ""
         
     }
+
 }

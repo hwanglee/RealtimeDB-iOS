@@ -28,7 +28,7 @@ public extension UIImage {
 
 class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var db : DatabaseReference?
+    var db : DatabaseReference!
     @IBOutlet var tableView: UITableView!
     var items = [Post]()
     var favorites = [Post]()
@@ -105,9 +105,9 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "favoriteInfo" {
             let controller = segue.destination as! PostInfoController
-            let post = sender as! Post
+            let data = sender as! (Post, User)
             
-            controller.post = post
+            controller.data = data
         }
     }
     
@@ -132,9 +132,14 @@ class FavoritesController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = favorites[indexPath.row]
+        let uid = post.pid!
         
-        self.performSegue(withIdentifier: "favoriteInfo", sender: post)
-        tableView.deselectRow(at: indexPath, animated: true)
+        db?.child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let publisher = User(snapshot: snapshot)
+            
+            self.performSegue(withIdentifier: "favoriteInfo", sender: (post, publisher))
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
